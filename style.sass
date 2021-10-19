@@ -8,6 +8,9 @@
 $main: #0500e5
 $gray: #585858
 
+body
+    background-color: #fff
+
 *
     margin: 0
     padding: 0
@@ -205,7 +208,44 @@ footer
     100%
         background-position-x: 500px
 
+/*-------------------------------------導入頁面--------------------*/
+.loading
+    width: 100%
+    height: 100%
+    position: fixed
+    top: 0
+    background-color: #ffffff
+    z-index: 3000
+    +flex()
+    transition: 0.5s 0.5s
+
+    &.close
+        opacity: 0
+        z-index: -1
+        transition: 0.5s 0.5s
+
+        p
+            transform: scale(0.01) 
+            transition: 0.5s 0.5s
+
+    div       
+        p
+            margin: 0
+            font-size: 5rem
+            letter-spacing: 22rem
+            color: $main
+            font-weight: 800
+            
+
+/* ---------------- 小載體 ---------------------------*/
+
 @media screen and ( max-width: 760px )
+
+    .loading
+        div 
+            margin:0 20px
+            p
+             font-size: 1.5rem
 
     header
         display: flex
@@ -245,6 +285,11 @@ footer
         font-size: 1.5rem
         margin: 30px 0 
 
+    footer 
+        padding: 20px 30px
+        .menu li a
+            font-size: 1rem
+        
 
         
 
