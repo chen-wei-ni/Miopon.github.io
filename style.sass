@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/earlyaccess/notosanstc.css')
+
+@mixin flex()
+    display: flex
+    justify-content: center
+    align-items: center
+
+$main: #0500e5
+$gray: #585858
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    font-family: 'Noto Sans TC',serif
+
+header
+    margin: 20px 50px 0 50px
+    display: flex 
+    align-items: center
+    justify-content: space-between
+
+    .logo
+        display: flex
+        align-items: center
+        padding-top: 30px
+
+        div
+            &:nth-child(1)
+                max-width: 200px
+            img
+                width: 100%
+
+            &:nth-child(2)
+                margin-left: 10px
+                font-size: 0.8rem
+                letter-spacing: 1px
+                opacity: 0.8
+
+    .tab
+        padding-top: 30px
+        ul
+            display: flex
+            list-style: none
+            padding: 0
+
+            li
+                margin: 0 18px
+                
+
+                a
+                    display: block
+                    text-decoration: none
+                    position: relative
+                    white-space: nowrap
+                    color: $main
+                    
+                    &::before
+                        content:""
+                        transform-origin: 50% 50%
+                        transform: scale3d(0, 1, 1)
+                        transition: transform 0.3s
+                        position: absolute
+                        width: 100%
+                        height: 1.5px
+                        background: $main
+                        top: 100%
+                        left: 0
+                        pointer-events: none
+                        transition-property: transform
+                        transition-duration: 0.3s
+                        transition-timing-function: ease
+                    &:hover
+                        &::before
+                            transform-origin: 0% 50%
+                            transform: scale3d(1, 1, 1)
+                            
+                        
+
+.container
+    width: 100%
+    min-height: 100vh
+    padding: 6% 15% 15% 15%
+
+.title
+    color: $main
+    text-align: center
+    font-size: 2rem
+    font-weight: 800
+    margin: 50px 0
+    letter-spacing: 1px
+
+.gallery
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr))
+    grid-gap: 50px 35px
+    text-decoration: none
+    list-style: none
+
+    a
+        border: 2px solid $main
+        display: block
+        transition: all 0.3s ease
+        overflow: hidden
+        
+        img
+            width: 100%
+            height: 100%
+            vertical-align: top
+
+        &:hover
+            box-shadow: 5px 5px $main
+            transform: translate(-10px,-10px)
+            img
+                transition: all 0.3s ease
+
+            
+    .desc
+        p
+            font-size: 0.8rem
+            color: #585858
+            letter-spacing: 1px
+
+/*波浪 footer*/
+
+.container2
+    margin: 0
+    display: flex
+    justify-content: flex-end
+    align-items: flex-end
+footer
+    position: relative
+    width: 100%
+    background: $main
+    padding: 20px 50px
+    +flex()
+    flex-direction: column
+
+    .social-icon,.menu
+        +flex()
+        position: relative
+        margin: 10px 0
+        flex-wrap: wrap
+        z-index: 2000
+
+        li
+            list-style: none
+            a
+                font-size: 2rem
+                color: #fff
+                margin: 0 10px
+                display: inline-block
+                transition: 0.5s
+                &:hover
+                    transform: translateY(-10px)
+                    transition: 0.5s
+    
+    .menu li a 
+        text-decoration: none
+        font-size: 1.2rem
+        opacity: 0.7
+        &:hover
+            opacity: 1
+
+    p
+        color: #fff
+        text-align: center
+        margin: 15px 0 10px 0
+        font-size: 0.9rem
+
+.wave
+    position: absolute
+    top: -80px
+    left: 0
+    width: 100%
+    height: 100px
+    background: url('images/wave2.png')
+    background-size: 1000px 100px
+    animation-fill-mode: both
+
+#wave1
+    z-index: 1000
+    opacity: 1
+    bottom: 0
+    animation: animatWave 12s linear infinite 
+    animation-delay: -1s
+    
+
+#wave2
+    z-index: 999
+    opacity: 0.2
+    bottom: 10px
+    animation: animatWave2 20s linear infinite     
+
+
+@keyframes animatWave
+    0%
+        background-position-x:  1000px
+    100%
+        background-position-x:  0px
+
+@keyframes animatWave2
+    0%
+        background-position-x: 0px
+    100%
+        background-position-x: 500px
+
+@media screen and ( max-width: 760px )
+
+    header
+        display: flex
+        flex-direction: column
+        margin: 0
+
+        .logo
+            flex-wrap: wrap
+            justify-content: center
+            flex-direction: column
+
+    .container
+        padding: 2% 12% 25% 12%
+
+    .gallery
+        grid-template-columns: repeat(auto-fit, minmax(110px,1fr))
+        grid-gap: 30px 20px
+
+    .tab
+        padding-top: 30px
+        ul
+            display: flex
+            list-style: none
+            padding: 0
+
+            li
+                margin: 0 10px
+                
+
+                a
+                    display: block
+                    text-decoration: none
+                    position: relative
+                    white-space: nowrap
+                    color: $main
+    .title
+        font-size: 1.5rem
+        margin: 30px 0 
+
+
+        
+
